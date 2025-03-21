@@ -9,7 +9,10 @@ class StringCalculator {
     return numbers.reduce((sum, num) => sum + num, 0);
   }
   _extractDelimiterAndNumbers(numbers) {
-    return numbers.split(",").map((num) => parseInt(num));
+    return numbers
+      .replace(/\n/g, ",")
+      .split(",")
+      .map((num) => parseInt(num));
   }
 }
 
