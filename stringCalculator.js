@@ -1,7 +1,6 @@
 class StringCalculator {
-  constructor() {
-    this.DEFAULT_DELIMITER = ",";
-  }
+  DEFAULT_DELIMITER = ",";
+  MAX_NUMBER = 1000;
   add(numbersString) {
     if (numbersString === "") return 0;
 
@@ -11,7 +10,9 @@ class StringCalculator {
 
     this._validateNoNegativeNumbers(parsedNumbers);
 
-    return parsedNumbers.reduce((sum, num) => sum + num, 0);
+    return parsedNumbers
+      .filter((num) => num <= this.MAX_NUMBER)
+      .reduce((sum, num) => sum + num, 0);
   }
 
   _extractDelimiterAndNumbers(numbersString) {
