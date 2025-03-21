@@ -38,4 +38,19 @@ describe("StringCalculator", () => {
       "negative numbers not allowed -1,-2,-4"
     );
   });
+
+  test("should return sum for numbers ignoring any number greater than 1000", () => {
+    expect(calculator.add("1,2,3,1003")).toBe(6);
+    expect(calculator.add("1,2,3,2000")).toBe(6);
+  });
+
+  test("should return sum for numbers ignoring any number greater than 1000 and newline delimiters", () => {
+    expect(calculator.add("1\n2\n3,1003")).toBe(6);
+    expect(calculator.add("1\n2,3,2000")).toBe(6);
+  });
+
+  test("should return sum for numbers ignoring any number greater than 1000 and custom delimiters", () => {
+    expect(calculator.add("//;\n1;2;2000")).toBe(3);
+    expect(calculator.add("//*\n1*2*3;1002")).toBe(6);
+  });
 });
