@@ -1,0 +1,22 @@
+{
+  "name": "string_calculator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "stringCalculator.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alihasan15/string_calculator.git"
+  },
+  "author": "Alihasan Mulji",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Alihasan15/string_calculator/issues"
+  },
+  "homepage": "https://github.com/Alihasan15/string_calculator#readme",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
