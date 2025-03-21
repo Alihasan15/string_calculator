@@ -1,8 +1,15 @@
 class StringCalculator {
+  constructor() {
+    this.DEFAULT_DELIMITER = ",";
+  }
   add(numbersString) {
     if (numbersString === "") return 0;
 
-    return parseInt(numbersString);
+    const numbers = this._extractDelimiterAndNumbers(numbersString);
+    return numbers.reduce((sum, num) => sum + num, 0);
+  }
+  _extractDelimiterAndNumbers(numbers) {
+    return numbers.split(",").map((num) => parseInt(num));
   }
 }
 
