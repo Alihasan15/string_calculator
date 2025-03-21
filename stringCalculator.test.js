@@ -10,4 +10,8 @@ describe("StringCalculator", () => {
   test("should return the number for a single number string", () => {
     expect(calculator.add("1")).toBe(1);
   });
+
+  test("should return the sum for two comma-separated numbers", () => {
+    expect(calculator.add("1,5")).toBe(6);
+  });
 });
