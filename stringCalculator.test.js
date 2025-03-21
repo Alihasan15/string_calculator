@@ -26,4 +26,16 @@ describe("StringCalculator", () => {
   test("should support custom delimiter specified at the beginning", () => {
     expect(calculator.add("//;\n1;2")).toBe(3);
   });
+
+  test("should throw an exception for negative numbers", () => {
+    expect(() => calculator.add("-1,2")).toThrow(
+      "negative numbers not allowed -1"
+    );
+  });
+
+  test("should include all negative numbers in the exception message", () => {
+    expect(() => calculator.add("-1,-2,3,-4")).toThrow(
+      "negative numbers not allowed -1,-2,-4"
+    );
+  });
 });
