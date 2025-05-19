@@ -1,6 +1,10 @@
 const StringCalculator = require("./stringCalculator");
+const fs = require("fs");
 
 describe("StringCalculator", () => {
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
   const calculator = new StringCalculator();
 
   test("should return 0 for empty string", () => {
@@ -25,6 +29,20 @@ describe("StringCalculator", () => {
 
   test("should support custom delimiter specified at the beginning", () => {
     expect(calculator.add("//;\n1;2")).toBe(3);
+  });
+  test("should check if the file is created with negative numbers", () => {
+    const mockWriteFile = jest.spyOn(fs, "writeFile");
+    try {
+      calculator.add("-1,-2,3,-4");
+    } catch (e) {
+      // Expected exception; do nothing
+    }
+    expect(mockWriteFile).toHaveBeenNthCalledWith(
+      1,
+      "./negative_numbers.txt",
+      "-1,-2,-4",
+      expect.anything()
+    );
   });
 
   test("should throw an exception for negative numbers", () => {
