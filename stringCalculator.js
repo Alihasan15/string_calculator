@@ -1,6 +1,10 @@
+const fs = require("fs");
+
 class StringCalculator {
   DEFAULT_DELIMITER = ",";
   MAX_NUMBER = 1000;
+  NEGATIVE_NUMBER_FILE_PATH = "./negative_numbers.txt";
+
   add(numbersString) {
     if (numbersString === "") return 0;
 
@@ -38,6 +42,13 @@ class StringCalculator {
     const negativeNumbers = numbers.filter((num) => num < 0);
 
     if (negativeNumbers.length > 0) {
+      fs.writeFile(
+        this.NEGATIVE_NUMBER_FILE_PATH,
+        `${negativeNumbers.join(",")}`,
+        (err) => {
+          if (err) throw err;
+        }
+      );
       throw new Error(
         `negative numbers not allowed ${negativeNumbers.join(",")}`
       );
